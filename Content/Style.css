@@ -1,0 +1,168 @@
+﻿body
+{
+    background-color:#f6f6f6;
+    margin: 0px;
+}
+body, input[type=file], input[type=submit], input[type=text], select
+{
+    font-family: Segoe Light;
+}
+.primaryColor
+{
+    background-color: #D02049;
+}
+h1, h2, h3, h4, h5
+{
+    color:#D02049;
+}
+hr
+{
+    height:1px;
+}
+#line
+{
+    height: 5px;
+}
+#Page
+{
+    max-width: 1024px;
+    margin: auto;
+    margin-top: 0px;
+}
+#menu_bar
+{
+    background-color: #333333;
+    color: White;
+}
+#menu_bar UL
+{
+    padding: 0px;
+}
+.seprator
+{
+    padding: 0px !important;
+}
+#menu_bar LI
+{
+    display: inline-block;
+    padding: 15px;
+}
+
+#menu_bar LI a
+{
+    text-decoration: none;
+    color: White;
+}
+img
+{
+    border: 0px;
+}
+.site-title img
+{
+    padding: 5px;
+    padding-bottom: 0px;
+}
+footer
+{
+    background-color: #333;
+    color: White;
+    padding: 10px;
+    font-size: 80%;
+}
+footer ul
+{
+    padding: 0px;
+}
+footer ul li
+{
+    display: inline-block;
+    padding: 5px;
+}
+footer ul li a
+{
+    color: White;
+    text-decoration: none;
+    font-size: 80%;
+}
+footer ul li a:hover
+{
+    text-decoration: underline;
+}
+.leftPanel
+{
+    width:73.5%
+}
+.RightPanel
+{
+    /*float:right;*/
+    min-height: 600px;
+    width: 26%;
+    /*background-color: #a1a1a1;*/
+    height: 100%;
+}
+.channel
+{
+    margin: 5px;
+    margin-right: 0px;
+}
+ul#renderbody
+{
+    padding-left: 0px;
+}
+ul#renderbody li
+{
+    display: inline-block;
+    vertical-align: top;
+}
+input[type=submit]
+{
+    
+    font-size: 120%;
+    background-color: #333;
+    border: 2px solid #BCBBB9;
+    color: White;
+    cursor: pointer;
+    min-width: 100px;
+}
+input[type=text]
+{
+    padding: 5px;
+    width: 90%;
+    
+    font-size: 120%;
+}
+input[type=file]
+{
+    padding: 5px;
+    width: 100%;
+  
+    font-size: 120%;
+    border: 2px solid #BCBBB9;
+    color: White;
+    cursor: pointer;
+    min-width: 100px;
+}
+select
+{
+    min-width: 200px;
+    
+    font-size: 100%;
+    padding: 5px;
+}
+.editor-label
+{
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 120%;
+}
+
+#Login
+{
+    width:300px;
+    height:300px;
+    position:fixed;
+    top:170px;
+    left:450px;
+    background-color:#333;
+}

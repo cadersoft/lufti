@@ -1,0 +1,17 @@
+﻿@model IEnumerable<TVChannel.Models.Channel>
+
+@{
+    var Name = Model.ToList().FirstOrDefault().Category.Name;
+    ViewBag.Title = Name;
+}
+<h1>@Name</h1>
+@foreach (TVChannel.Models.Channel _channel in Model)
+{
+    <div class="channel" style="display: inline-block">
+        <a href="/Channel/TV/@_channel.Name.Replace(" ", "-")">
+            <img src="@_channel.Image" alt="@_channel.Name" width="80px" title="@_channel.Name" />
+        </a>
+        <br />
+    </div>
+}
+

@@ -1,0 +1,25 @@
+﻿@model TVChannel.Models.Channel
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Preview</title>
+    @Styles.Render("~/Content/Style.css")
+</head>
+<body>
+    <div>
+        @if (Model.Iframe == null)
+        {
+            <embed type="application/x-shockwave-flash" src="@Model.URL" quality="high" name="mp1" id="mp1" flashvars="@HttpUtility.HtmlDecode(Model.FlashVars)" allowscriptaccess="always" allowfullscreen="true" height="450" width="740">
+        }
+        else
+        {
+    @*<iframe id="thatframe" height="510" src="http://www.livecaster.tv/channel.php?u=bbcone" frameBorder="0" width="600" allowTransparency="true" scrolling="no"></iframe>*@
+    <iframe id="thatframe" height="510" src="@HttpUtility.HtmlDecode(Model.Iframe)" frameBorder="0" width="740" allowTransparency="true" scrolling="no"></iframe>
+        }
+    </div>
+</body>
+</html>

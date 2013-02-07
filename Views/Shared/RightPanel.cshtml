@@ -1,0 +1,35 @@
+﻿@*<div style="margin:5px;">
+<img src="/Images/ads1.png" />
+</div>
+<div style="margin:5px;">
+<img src="/Images/ads3.png" />
+</div>
+<div style="margin:5px;">
+<img src="/Images/ads2.png" />
+</div>
+<div style="margin:5px;" class="primaryColor">
+    <img src="/Images/adshere.png" />
+</div>*@
+
+@{
+    TVChannel.Models.TVChannelEntities db = new TVChannel.Models.TVChannelEntities();
+    List<TVChannel.Models.Channel> _channel = db.Channels.ToList();
+
+    TVChannel.Models.String2.Shuffle<TVChannel.Models.Channel>(_channel);
+    
+    _channel = _channel.Take(24).ToList();
+
+    int chan_length = _channel.Count();
+    for (int k = 0; k < chan_length; k++)
+    {
+    <div class="channel" style="display: inline-block">
+        <a href="/Channel/TV/@_channel[k].Name.Replace(" ","-")">
+            <img src="@_channel[k].Image" alt="@_channel[k].Name" width="80px" title="@_channel[k].Name" /></a><br />
+        @*@Html.ActionLink(_channel[k].Name, "Details", new { id = _channel[k].Id })
+        @Html.ActionLink("Edit", "Edit", new { id = _channel[k].Id })
+        @Html.ActionLink("Delete", "Delete", new { id = _channel[k].Id })*@
+        
+        
+    </div>
+    }
+}

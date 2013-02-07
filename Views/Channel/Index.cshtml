@@ -1,0 +1,30 @@
+﻿@model IEnumerable<TVChannel.Models.DisplayChannel>
+   @using TVChannel.Helpers
+@{
+    ViewBag.Title = "Index";
+}
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+@foreach (TVChannel.Models.DisplayChannel dp in Model)
+{
+    <div>
+    <h2>@dp.CategoryName</h2>
+    
+    @foreach (var item in dp.Channels)
+    {
+    <div style="display:inline-block; text-align:center;">
+        <a href="/Channel/TV/@item.Name.Replace(" ", "-")" >
+            <img src="@item.Image" alt="@item.Name" title="@item.Name" width="80px" /></a><br />
+            <span title="@item.Name">@Html.ShortString(item.Name, 10)</span>
+            @*@Html.ActionLink(item.Name, "Details", new { id = item.Id })*@
+            @*@Html.ActionLink("Edit", "Edit", new { id = item.Id })
+            @Html.ActionLink("Delete", "Delete", new { id = item.Id })*@
+        <br /><br />
+    </div>
+    }
+    <br />
+    @Html.ActionLink("View all", "List", "Category", new { id = dp.CategoryName }, null)
+    
+    </div>
+}

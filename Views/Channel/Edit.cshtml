@@ -1,0 +1,138 @@
+﻿@model TVChannel.Models.Channel
+@{
+    ViewBag.Title = "Edit";
+}
+@*<script type="text/javascript">
+    $().ready(function () {
+        //$("#file").hide();
+        $("#Image").click(function () {
+            $("#file").click();
+        });
+        //$("#browse").click();
+        $("#file").change(function () {
+            var arr = $(this).val().split("\\");
+            var name = arr[arr.length - 1];
+            $("#Image").val("/Images/" + name);
+        });
+
+        $("#file").val($("#Image").val());
+    });
+</script>*@
+
+@using (Html.BeginForm("Edit", "Channel", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary(true)
+
+ 
+
+    @Html.HiddenFor(model => model.Id)
+
+    <table width="100%">
+        <tr>
+            <td>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Name)
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Name)
+                    @Html.ValidationMessageFor(model => model.Name)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Image)
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Image)
+                    @Html.ValidationMessageFor(model => model.Image)
+                    @*<input type="file" id="file" name="file" />*@
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.URL)
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.URL)
+                    @Html.ValidationMessageFor(model => model.URL)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.FlashVars)
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.FlashVars)
+                    @Html.ValidationMessageFor(model => model.FlashVars)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.CategoryId, "Category")
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    @Html.DropDownList("CategoryId", "Select")
+                    @Html.ValidationMessageFor(model => model.CategoryId)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.LanguageId, "Language")
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    @Html.DropDownList("LanguageId", "Select")
+                    @Html.ValidationMessageFor(model => model.LanguageId)
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <div class="editor-label">
+                    @Html.LabelFor(model => model.Iframe)
+                </div>
+            </td>
+            <td>
+                <div class="editor-field">
+                    @Html.EditorFor(model => model.Iframe)
+                    @Html.ValidationMessageFor(model => model.Iframe)
+                </div>
+            </td>
+        </tr>
+    </table>
+     
+
+    <p>
+        <input type="submit" value="Save" />
+    </p>
+   
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}<br />
+@*<iframe id="thatframe" height="510" src="/Channel/Preview/@Model.Id" frameBorder="0" width="740" allowTransparency="true" scrolling="no"></iframe>*@

@@ -1,0 +1,11 @@
+﻿
+@{
+    TVChannel.Models.TVChannelEntities db = new TVChannel.Models.TVChannelEntities();
+    List<TVChannel.Models.Category> Categories = db.Categories.ToList();
+    
+    foreach(TVChannel.Models.Category cat in Categories)
+    {
+        <li>@Html.ActionLink(cat.Name, "List", "Category", new { id = cat.Name }, null)</li>
+        <li class="seprator">|</li>
+    }
+}

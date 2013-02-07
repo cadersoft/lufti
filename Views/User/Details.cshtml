@@ -1,0 +1,28 @@
+﻿@model TVChannel.Models.User
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>User</h2>
+
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.email):  @Html.DisplayFor(model => model.email)
+    </div>
+
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.password):  @Html.DisplayFor(model => model.password)
+    </div>
+
+
+    <div class="display-label">
+         @Html.DisplayNameFor(model => model.Role.Name):   @Html.DisplayFor(model => model.Role.Name)
+    </div>
+ 
+
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id=Model.Id }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

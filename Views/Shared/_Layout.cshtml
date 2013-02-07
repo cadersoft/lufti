@@ -1,0 +1,106 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <title>@ViewBag.Title - REDAC</title>
+    <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <meta name="viewport" content="width=device-width" />
+    @Styles.Render("~/Content/Style.css")
+    @Scripts.Render("~/Scripts/jquery-1.7.1.js")
+    @Scripts.Render("~/bundles/modernizr")
+</head>
+<body>
+    <div class="primaryColor" id="line">
+    </div>
+    <div id="Page">
+        <header>
+            <div class="content-wrapper">
+                <div class="site-title ">
+                    @*@Html.ActionLink("your logo here", "Index", "Home")*@
+                    <a href="/Home"><img class="primaryColor" src="/Images/logo.png" alt="redac" /></a>
+                    <img style="padding:0px;margin:0px;margin-left:48px;" src="/Images/banner1.png" alt="banner" />
+                 </div>
+                @*<div id="Login">45646546</div>*@
+                <div id="menu_bar">
+                    <nav>
+                        <ul id="menu">
+                            <li class="primaryColor">@Html.ActionLink("Home", "Index", "Home")</li>
+                            <li class="seprator">|</li>
+                            <li>@Html.ActionLink("Channel", "Index", "Channel")</li>
+                            <li class="seprator">|</li>
+                            @Html.Partial("_Categories")
+                            <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                            <li class="seprator">|</li>
+                            <li>@Html.ActionLink("User", "Index", "User")</li>
+                            <li class="seprator">|</li>
+                            @Html.Partial("_LoginPartial")
+                        </ul>
+                    </nav>
+                    
+                </div>
+            </div>
+        </header>
+        <div id="body">
+                @if (ViewBag.IsHome == true)
+                {
+                    <img src="../../Images/Banner.png" width="100%" />
+                }
+            <ul id="renderbody">
+                <li class="leftPanel">
+                    @RenderSection("featured", required: false)
+                    <section class="content-wrapper main-content clear-fix" >
+                       <div >@RenderBody()</div>
+                    </section>
+                </li>
+                <li class="RightPanel">@Html.Partial("RightPanel")</li>
+            </ul>
+        </div>
+        <footer>
+            <div class="content-wrapper">
+                <div class="float-left">
+                <ul>
+                    @{
+                        TVChannel.Models.TVChannelEntities db = new TVChannel.Models.TVChannelEntities();
+
+                        List<TVChannel.Models.Category> _categories = db.Categories.ToList();
+                        List<TVChannel.Models.Language> _language = db.Languages.ToList();
+                        List<TVChannel.Models.Channel> _channel = db.Channels.ToList();
+                        int length = _categories.Count();
+                        int lang_length = _language.Count();
+                        int chan_length = _channel.Count();
+                         <UL>
+                         @{
+                             for (int j = 0; j < lang_length; j++)
+                             {
+                                 <li>@Html.ActionLink(_language[j].Name, "List", "Language", new { id = _language[j].Name }, null)</li>
+                             }
+
+                             for (int i = 0; i < length; i++)
+                             {
+                                 <li>@Html.ActionLink(_categories[i].Name, "List", "Category", new { id = _categories[i].Name }, null)</li>
+                             }
+
+                             for (int k = 0; k < chan_length; k++)
+                             {
+                                 <li>@Html.ActionLink(_channel[k].Name, "TV", "Channel", new { id = _channel[k].Name }, null)</li>
+                             }
+                         }
+                         </UL>
+                         
+                    }
+                </ul>
+                <ul>
+                    <li>&copy;@DateTime.Now.Year redac copyright</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Contact Us", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Advertise", "Contact", "Home")</li>
+                </ul>
+                    <p></p>
+                </div>
+            </div>
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @RenderSection("scripts", required: false)
+</body>
+</html>
